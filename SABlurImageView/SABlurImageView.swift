@@ -102,8 +102,10 @@ open class SABlurImageView: UIImageView {
       }
       
       CATransaction.animationWithDuration(0) {
-        self.nextBlurLayer?.contents = self.cgImages[nextIndex]
-        self.nextBlurLayer?.opacity = 1.0
+        if self.cgImages.count > nextIndex {
+          self.nextBlurLayer?.contents = self.cgImages[nextIndex]
+          self.nextBlurLayer?.opacity = 1.0
+        }
       }
     }
     previousImageIndex = index
